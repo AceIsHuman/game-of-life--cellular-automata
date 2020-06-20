@@ -17,7 +17,8 @@ const Wrapper = styled('div')({
   width: '100%',
   position: 'absolute',
   display: 'flex',
-  justifyContent: 'center',
+  alignItems: 'center',
+  flexDirection: 'column'
 });
 
 const Title = styled('h1')({
