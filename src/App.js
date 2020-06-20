@@ -1,10 +1,12 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
+import GameOfLife from './components/GameOfLife/GameOfLife';
 
 function App() {
   return (
     <Wrapper maxWidth='lg'>
       <Title>Conway's Game of Life</Title>
+      <GameOfLife />
     </Wrapper>
   );
 }
