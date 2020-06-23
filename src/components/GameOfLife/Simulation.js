@@ -3,11 +3,11 @@ import { styled } from '@material-ui/core';
 import Grid from './Grid/Grid';
 import Controls from './Controls';
 
-function Simulation() {
+function Simulation(props) {
   return (
     <Container>
       <Generation>Generation: #</Generation>
-      <Grid />
+      <Grid currentGen={props.currentGen} />
       <Controls />
     </Container>
   );
