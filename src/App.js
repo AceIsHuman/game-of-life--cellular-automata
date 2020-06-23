@@ -5,7 +5,7 @@ import About from './components/About';
 
 function App() {
   return (
-    <Wrapper maxWidth='lg'>
+    <Wrapper>
       <Title>Conway's Game of Life</Title>
       <GameOfLife />
       <About />
