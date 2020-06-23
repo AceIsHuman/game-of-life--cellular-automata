@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from '@material-ui/core';
-import Grid from './Grid';
+import Grid from './Grid/Grid';
 import Controls from './Controls';
 
 function Simulation() {
