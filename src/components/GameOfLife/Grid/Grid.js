@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
-import { generateGrid } from './helpers/'
+import { generateGrid, fillGrid } from './helpers/'
 
-function Grid() {
+function Grid(props) {
   useEffect(() => {
     const canvas = document.getElementById("grid");
     generateGrid(canvas)
-  }, []);
+    fillGrid(canvas, props.currentGen);
+  }, [props.currentGen]);
 
   return <canvas id="grid"></canvas>;
 }
