@@ -1,3 +1,5 @@
+import { Cell } from './Cell';
+
 export function generateGrid(canvas) {
   canvas.width = 500;
   canvas.height = 500;
@@ -27,11 +29,26 @@ export function fillGrid(canvas, generation) {
 }
 
 function fillCell(cell, x, y, ctx) {
-  if (cell === 0) {
-    ctx.fillStyle = '#e0e0e0';
-    ctx.fillRect(x * 20 + 1, y * 20 + 1, 18, 18);
-  } else if (cell === 1) {
+  if (cell.isAlive) {
     ctx.fillStyle = '#1faf34';
     ctx.fillRect(x * 20 + 1, y * 20 + 1, 18, 18);
+  } else {
+    ctx.fillStyle = '#e0e0e0';
+    ctx.fillRect(x * 20 + 1, y * 20 + 1, 18, 18);
   }
+}
+
+export function createCell(x, y, matrix) {
+  const isAlive = !!matrix[y][x];
+  matrix[y][x] = new Cell(x, y, isAlive);
+}
+
+export function presetToCells(matrix) {
+  for (let y = 0; y < matrix.length; y++) {
+    for (let x = 0; x < matrix.length; x++) {
+      createCell(x, y, matrix);
+    }
+  }
+  console.log(matrix);
+  return matrix;
 }
