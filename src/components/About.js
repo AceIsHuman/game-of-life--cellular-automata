@@ -1,10 +1,11 @@
 import React from 'react';
 import { styled } from '@material-ui/core/styles';
+import { SubTitle } from './Reusables/';
 
 function About() {
   return (
     <Container>
-      <Title>About this Algorithm:</Title>
+      <SubTitle>About this Algorithm:</SubTitle>
       <Text>
         Aliquip qui esse non ad non. Exercitation fugiat ex ea deserunt
         voluptate eiusmod consectetur cupidatat laborum. Amet do irure laboris
@@ -20,10 +21,6 @@ const Container = styled('div')({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-});
-
-const Title = styled('h3')({
-  color: '#EEEEEE',
 });
 
 const Text = styled('p')({
