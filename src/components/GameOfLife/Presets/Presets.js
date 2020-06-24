@@ -38,6 +38,11 @@ const Preset = styled('div')({
   alignItems: 'center',
   cursor: 'pointer',
   marginBottom: '1rem',
+  padding: '0.5rem',
+  borderRadius: '0.2rem',
+  '&:hover': {
+    backgroundColor: 'rgba(255, 255, 255, 0.1)',
+  },
 });
 
 const Image = styled('img')({
