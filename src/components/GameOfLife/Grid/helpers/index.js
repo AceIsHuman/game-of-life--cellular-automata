@@ -49,6 +49,6 @@ export function presetToCells(matrix) {
       createCell(x, y, matrix);
     }
   }
-  console.log(matrix);
+
   return matrix;
 }
