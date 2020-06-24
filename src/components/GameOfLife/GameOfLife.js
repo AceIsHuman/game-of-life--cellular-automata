@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { styled } from '@material-ui/core/styles';
 
+import { presetToCells } from './Grid/helpers/';
+
 import Simulation from './Simulation';
 import Presets from './Presets';
 import Rules from './Rules';
@@ -21,8 +23,7 @@ const Container = styled('section')({
   display: 'flex',
 });
 
-
-export const preset1 = [
+const preset1 = presetToCells([
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -48,6 +49,6 @@ export const preset1 = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-];
+]);
 
 export default GameOfLife;
