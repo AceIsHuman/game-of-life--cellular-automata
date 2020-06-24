@@ -1,5 +1,5 @@
 export class Cell {
-  constuctor(x, y, isAlive) {
+  constructor(x, y, isAlive) {
     this.x = x;
     this.y = y;
     this.isAlive = isAlive;
