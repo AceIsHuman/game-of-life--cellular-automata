@@ -10,7 +10,7 @@ function GameOfLife() {
 
   return (
     <Container>
-      <Simulation currentGen={currentGen} />
+      <Simulation currentGen={currentGen} setCurrentGen={setCurrentGen} />
       <Presets setCurrentGen={setCurrentGen} />
       <Rules />
     </Container>
