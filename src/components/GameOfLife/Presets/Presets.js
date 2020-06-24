@@ -3,10 +3,11 @@ import { styled } from '@material-ui/core';
 
 import { VerticalContainer, SubTitle } from '../../Reusables';
 import SmallCross from '../../../assets/presets/small_cross.jpg';
+import SmallFace from '../../../assets/presets/small_face.jpg';
 import presets from './';
 
 function Presets(props) {
-  const [selection, setSelection] = useState(presets["preset1"]);
+  const [selection, setSelection] = useState(presets['preset1']);
 
   useEffect(() => {
     props.setCurrentGen(selection);
@@ -23,6 +24,10 @@ function Presets(props) {
         <Image src={SmallCross} alt='preset-1_small-cross' />
         <SubTitle>Preset 1</SubTitle>
       </Preset>
+      <Preset onClick={(e) => handleClick(e)} data-preset='preset2'>
+        <Image src={SmallFace} alt='preset-2_small-face' />
+        <SubTitle>Preset 2</SubTitle>
+      </Preset>
     </VerticalContainer>
   );
 }
@@ -31,6 +36,8 @@ const Preset = styled('div')({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  cursor: 'pointer',
+  marginBottom: '1rem',
 });
 
 const Image = styled('img')({
