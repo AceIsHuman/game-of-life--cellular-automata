@@ -6,14 +6,35 @@ export class Cell {
   }
 
   nextGenState(matrix) {
+    let neighborCount = 0;
     for (let a = -1; a < 2; a++) {
       for (let b = -1; b < 2; b++) {
         if (a === 0 && b === 0) {
           continue;
         }
-        const cell = matrix[this.x + a][this.y + b];
-        console.log(cell);
+        const xPosition = this.x + a;
+        const yPosition = this.y + b;
+        if (
+          xPosition >= 0 &&
+          yPosition >= 0 &&
+          xPosition < matrix.length &&
+          yPosition < matrix.length
+        ) {
+          const cell = matrix[xPosition][yPosition];
+          if (cell.isAlive) neighborCount += 1;
+        }
       }
+    }
+    return this.aliveOrDead(neighborCount);
+  }
+
+  aliveOrDead(neighborCount) {
+    if (!this.isAlive && neighborCount === 3) {
+      return true;
+    } else if ((this.isAlive && neighborCount === 2) || neighborCount === 3) {
+      return true;
+    } else {
+      return false;
     }
   }
 }
