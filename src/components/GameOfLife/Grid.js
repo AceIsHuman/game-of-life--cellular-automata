@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { generateGrid, fillGrid } from './helpers/'
+import { generateGrid, fillGrid } from './helpers'
 
 function Grid(props) {
   useEffect(() => {
