@@ -12,15 +12,15 @@ export class Cell {
         if (a === 0 && b === 0) {
           continue;
         }
-        const xPosition = this.x + a;
-        const yPosition = this.y + b;
+        const xPosition = this.x + b;
+        const yPosition = this.y + a;
         if (
           xPosition >= 0 &&
           yPosition >= 0 &&
           xPosition < matrix.length &&
           yPosition < matrix.length
         ) {
-          const cell = matrix[xPosition][yPosition];
+          const cell = matrix[yPosition][xPosition];
           if (cell.isAlive) neighborCount += 1;
         }
       }
@@ -31,7 +31,7 @@ export class Cell {
   aliveOrDead(neighborCount) {
     if (!this.isAlive && neighborCount === 3) {
       return true;
-    } else if ((this.isAlive && neighborCount === 2) || neighborCount === 3) {
+    } else if (this.isAlive && (neighborCount === 2 || neighborCount === 3)) {
       return true;
     } else {
       return false;
