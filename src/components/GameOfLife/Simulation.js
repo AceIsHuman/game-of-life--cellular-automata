@@ -8,7 +8,11 @@ function Simulation(props) {
   return (
     <VerticalContainer>
       <SubTitle size='h3'>Generation: {props.genCount}</SubTitle>
-      <Grid currentGen={props.currentGen} setCurrentGen={props.setCurrentGen} />
+      <Grid
+        currentGen={props.currentGen}
+        setCurrentGen={props.setCurrentGen}
+        playing={props.playing}
+      />
       <Controls
         setPlaying={props.setPlaying}
         playSimulation={props.playSimulation}
