@@ -13,10 +13,11 @@ function Grid(props) {
   return (
     <canvas
       id='grid'
-      onClick={(e) =>
-        switchCellState(e, props.currentGen, props.setCurrentGen, canvas)
-      }
-      style={{ cursor: 'pointer' }}
+      onClick={(e) => {
+        if (props.playing) return;
+        switchCellState(e, props.currentGen, props.setCurrentGen, canvas);
+      }}
+      style={{ cursor: props.playing ? null : 'pointer' }}
     ></canvas>
   );
 }
