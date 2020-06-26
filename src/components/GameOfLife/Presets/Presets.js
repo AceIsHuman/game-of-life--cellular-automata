@@ -4,6 +4,7 @@ import { styled } from '@material-ui/core';
 import { VerticalContainer, SubTitle } from '../../Reusables';
 import SmallCross from '../../../assets/presets/small_cross.jpg';
 import SmallFace from '../../../assets/presets/small_face.jpg';
+import RocketMan from '../../../assets/presets/rocket_man.jpg';
 import presets from './';
 
 function Presets(props) {
@@ -29,6 +30,10 @@ function Presets(props) {
       <Preset onClick={(e) => handleClick(e)} data-preset='preset2'>
         <Image src={SmallFace} alt='preset-2_small-face' />
         <SubTitle>Preset 2</SubTitle>
+      </Preset>
+      <Preset onClick={(e) => handleClick(e)} data-preset='preset3'>
+        <Image src={RocketMan} alt='preset-3_rocket-man' />
+        <SubTitle>Preset 3</SubTitle>
       </Preset>
     </VerticalContainer>
   );
