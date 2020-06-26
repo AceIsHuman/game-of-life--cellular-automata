@@ -14,8 +14,11 @@ function GameOfLife() {
   const canvas = document.getElementById('grid');
 
   const getNextGen = async (currentGen) => {
+    // create empyt array to populate next gen data
     const rows = new Array(currentGen.length).fill([]);
     const next = rows.map(i => new Array(currentGen.length).fill(0));
+
+    // determine cell state and create new Cells on next
     for (let y = 0; y < currentGen.length; y++) {
       for (let x = 0; x < currentGen.length; x++) {
         const cell = currentGen[y][x];
@@ -55,8 +58,9 @@ function GameOfLife() {
         setPlaying={setPlaying}
         playSimulation={playSimulation}
         genCount={genCount}
+        playing={playing}
       />
-      <Presets setCurrentGen={setCurrentGen} />
+      <Presets setCurrentGen={setCurrentGen} playing={playing} />
       <Rules />
     </Container>
   );
