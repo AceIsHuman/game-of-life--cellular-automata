@@ -25,8 +25,23 @@ function Controls(props) {
         </Button>
       </Grid>
       <Grid item>
-        <Button variant='contained' color='secondary'>
-          Stop
+        <Button
+          variant='contained'
+          color='secondary'
+          onClick={() => {
+            props.setPlaying(false);
+            props.setGenCount(1);
+            props.setCurrentGen(
+              props.currentGen.map((row) => {
+                return row.map((cell) => {
+                  cell.isAlive = false;
+                  return cell;
+                });
+              })
+            );
+          }}
+        >
+          Clear Grid
         </Button>
       </Grid>
     </Container>
