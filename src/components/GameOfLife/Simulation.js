@@ -7,9 +7,12 @@ import Controls from './Controls';
 function Simulation(props) {
   return (
     <VerticalContainer>
-      <SubTitle size='h3'>Generation: #</SubTitle>
+      <SubTitle size='h3'>Generation: {props.genCount}</SubTitle>
       <Grid currentGen={props.currentGen} setCurrentGen={props.setCurrentGen} />
-      <Controls />
+      <Controls
+        setPlaying={props.setPlaying}
+        playSimulation={props.playSimulation}
+      />
     </VerticalContainer>
   );
 }
