@@ -8,18 +8,32 @@ import RocketMan from '../../../assets/presets/rocket_man.jpg';
 import presets from './';
 
 function Presets(props) {
-  const { setCurrentGen, setGenCount } = props;
+  const { setCurrentGen, setGenCount, playing } = props;
   const [selection, setSelection] = useState(presets['preset1']);
 
   useEffect(() => {
     setCurrentGen(selection);
     setGenCount(1);
-  }, [setCurrentGen, selection]);
+  }, [setCurrentGen, setGenCount, selection]);
 
   const handleClick = (e) => {
+    if (playing) return;
     const userSelection = presets[e.currentTarget.dataset.preset];
     setSelection(userSelection);
   };
+
+  const Preset = styled('div')({
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    cursor: playing ? null : 'pointer',
+    marginBottom: '1rem',
+    padding: '0.5rem',
+    borderRadius: '0.2rem',
+    '&:hover': {
+      backgroundColor: playing ? null : 'rgba(255, 255, 255, 0.1)',
+    },
+  });
 
   return (
     <VerticalContainer style={{ justifyContent: 'center' }}>
@@ -38,19 +52,6 @@ function Presets(props) {
     </VerticalContainer>
   );
 }
-
-const Preset = styled('div')({
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  cursor: 'pointer',
-  marginBottom: '1rem',
-  padding: '0.5rem',
-  borderRadius: '0.2rem',
-  '&:hover': {
-    backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  },
-});
 
 const Image = styled('img')({
   maxWidth: '100px',
