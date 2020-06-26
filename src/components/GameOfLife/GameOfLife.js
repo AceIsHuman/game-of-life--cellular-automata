@@ -55,12 +55,12 @@ function GameOfLife() {
       <Simulation
         currentGen={currentGen}
         setCurrentGen={setCurrentGen}
-        setPlaying={setPlaying}
-        playSimulation={playSimulation}
-        genCount={genCount}
         playing={playing}
+        setPlaying={setPlaying}
+        genCount={genCount}
+        setGenCount={setGenCount}
       />
-      <Presets setCurrentGen={setCurrentGen} playing={playing} />
+      <Presets setCurrentGen={setCurrentGen} playing={playing} setGenCount={setGenCount} />
       <Rules />
     </Container>
   );

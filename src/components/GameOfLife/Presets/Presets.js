@@ -7,11 +7,12 @@ import SmallFace from '../../../assets/presets/small_face.jpg';
 import presets from './';
 
 function Presets(props) {
-  const { setCurrentGen } = props;
+  const { setCurrentGen, setGenCount } = props;
   const [selection, setSelection] = useState(presets['preset1']);
 
   useEffect(() => {
     setCurrentGen(selection);
+    setGenCount(1);
   }, [setCurrentGen, selection]);
 
   const handleClick = (e) => {

@@ -15,7 +15,9 @@ function Simulation(props) {
       />
       <Controls
         setPlaying={props.setPlaying}
-        playSimulation={props.playSimulation}
+        currentGen={props.currentGen}
+        setCurrentGen={props.setCurrentGen}
+        setGenCount={props.setGenCount}
       />
     </VerticalContainer>
   );
