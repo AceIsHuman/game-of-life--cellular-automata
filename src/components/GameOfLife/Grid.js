@@ -23,10 +23,10 @@ function Grid(props) {
 }
 
 function switchCellState(e, currentGen, setGenState, canvas) {
+  debugger;
   // Get x and y from click event
-  const x = Math.floor((e.clientX - canvas.offsetLeft) / 20);
-  // Bug when page is scrolled down
-  const y = Math.floor((e.clientY - canvas.offsetTop) / 20);
+  const x = Math.floor((e.pageX - canvas.offsetLeft) / 20);
+  const y = Math.floor((e.pageY - canvas.offsetTop) / 20);
 
   const cell = currentGen[y][x];
 
