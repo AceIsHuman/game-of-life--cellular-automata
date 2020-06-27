@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { styled } from '@material-ui/core';
+import { Cell } from '../helpers/Cell';
 
 import { VerticalContainer, SubTitle } from '../../Reusables';
 import SmallCross from '../../../assets/presets/small_cross.jpg';
 import SmallFace from '../../../assets/presets/small_face.jpg';
 import RocketMan from '../../../assets/presets/rocket_man.jpg';
+import Random from '../../../assets/presets/random.jpg';
 import presets from './';
 
 function Presets(props) {
@@ -20,6 +22,19 @@ function Presets(props) {
     if (playing) return;
     const userSelection = presets[e.currentTarget.dataset.preset];
     setSelection(userSelection);
+  };
+
+  const generateRandom = (e) => {
+    if (playing) return;
+    const columns = new Array(25).fill(0);
+    const random = columns.map((column, yIndex) => {
+      const row = new Array(25).fill(0);
+      return row.map((cell, xIndex) => {
+        const isAlive = Math.round(Math.random())
+        return new Cell(xIndex, yIndex, !!isAlive);
+      });
+    });
+    setSelection(random);
   };
 
   const Preset = styled('div')({
@@ -48,6 +63,10 @@ function Presets(props) {
       <Preset onClick={(e) => handleClick(e)} data-preset='preset3'>
         <Image src={RocketMan} alt='preset-3_rocket-man' />
         <SubTitle>Preset 3</SubTitle>
+      </Preset>
+      <Preset onClick={(e) => generateRandom(e)}>
+        <Image src={Random} alt='preset-3_rocket-man' />
+        <SubTitle>Random</SubTitle>
       </Preset>
     </VerticalContainer>
   );
