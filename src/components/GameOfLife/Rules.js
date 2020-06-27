@@ -8,15 +8,18 @@ function Rules() {
     <Container>
       <SubTitle>Rules:</SubTitle>
       <ul>
-        <li>Ut commodo Lorem in id elit laborum exercitation mollit.</li>
-        <li>Officia ad ad tempor proident minim deserunt.</li>
+        <li>Alive cells are represented by colored squares on the grid.</li>
         <li>
-          Magna duis eiusmod et aliqua consequat cupidatat velit excepteur
-          adipisicing sit mollit Lorem esse.
+          If an alive cell has either 2 or 3 live neighbors, the cell will
+          continue to live in the next generation.
         </li>
         <li>
-          Ullamco officia anim nulla amet cupidatat aute cillum aliqua officia
-          aliqua.
+          If an alive cell does not meet that criteria, it will die in the next
+          generation.
+        </li>
+        <li>
+          The only way for a dead cell to come alive, is if it has exactly three
+          neighbor cells that are alive.
         </li>
       </ul>
     </Container>
