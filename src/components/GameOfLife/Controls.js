@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { styled } from '@material-ui/core/styles';
 import { Grid, Button } from '@material-ui/core';
 
 function Controls(props) {
+  const [speedIndex, setSpeedIndex] = useState(0);
+  const speeds = [1, 2, 4];
+  const clearGrid = () => {
+    props.setPlaying(false);
+    props.setGenCount(1);
+    props.setCurrentGen(
+      props.currentGen.map((row) => {
+        return row.map((cell) => {
+          cell.isAlive = false;
+          return cell;
+        });
+      })
+    );
+  };
+
+  const toggleSpeed = () => {
+    let nextIndex = speedIndex + 1;
+    if (nextIndex >= speeds.length) {
+      nextIndex = 0;
+    }
+    setSpeedIndex(nextIndex);
+    props.setSpeed(1 / speeds[nextIndex]);
+  };
+
   return (
     <Container
       container
@@ -11,38 +35,28 @@ function Controls(props) {
       alignItems='center'
     >
       <Grid item>
-        <Button
+        <StyledButton
           variant='contained'
           color='primary'
           onClick={() => props.setPlaying(true)}
         >
           Play
-        </Button>
+        </StyledButton>
       </Grid>
       <Grid item>
-        <Button variant='contained' onClick={() => props.setPlaying(false)}>
+        <StyledButton variant='contained' onClick={() => props.setPlaying(false)}>
           Pause
-        </Button>
+        </StyledButton>
       </Grid>
       <Grid item>
-        <Button
-          variant='contained'
-          color='secondary'
-          onClick={() => {
-            props.setPlaying(false);
-            props.setGenCount(1);
-            props.setCurrentGen(
-              props.currentGen.map((row) => {
-                return row.map((cell) => {
-                  cell.isAlive = false;
-                  return cell;
-                });
-              })
-            );
-          }}
-        >
+        <StyledButton variant='contained' color='secondary' onClick={clearGrid}>
           Clear Grid
-        </Button>
+        </StyledButton>
+      </Grid>
+      <Grid item>
+        <StyledButton variant='contained' onClick={toggleSpeed} style={{}}>
+          Speed x{speeds[speedIndex]}
+        </StyledButton>
       </Grid>
     </Container>
   );
@@ -51,5 +65,9 @@ function Controls(props) {
 const Container = styled(Grid)({
   margin: '1rem 0',
 });
+
+const StyledButton = styled(Button)({
+  textTransform: 'none'
+})
 
 export default Controls;

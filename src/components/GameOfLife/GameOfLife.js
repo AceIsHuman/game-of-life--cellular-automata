@@ -12,6 +12,7 @@ function GameOfLife() {
   const [genCount, setGenCount] = useState(1);
   const [playing, setPlaying] = useState(false);
   const canvas = document.getElementById('grid');
+  const [speed, setSpeed] = useState(1)
 
   const getNextGen = async (currentGen) => {
     // create empyt array to populate next gen data
@@ -37,8 +38,8 @@ function GameOfLife() {
         setCurrentGen(next);
         fillGrid(canvas, next);
       }
-    }, 1000);
-  }, [genCount, currentGen, playing, canvas]);
+    }, speed * 1000);
+  }, [genCount, currentGen, playing, canvas, speed]);
 
   useEffect(() => {
     if (playing) {
@@ -59,6 +60,7 @@ function GameOfLife() {
         setPlaying={setPlaying}
         genCount={genCount}
         setGenCount={setGenCount}
+        setSpeed={setSpeed}
       />
       <Presets setCurrentGen={setCurrentGen} playing={playing} setGenCount={setGenCount} />
       <Rules />

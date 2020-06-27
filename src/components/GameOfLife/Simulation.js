@@ -18,6 +18,7 @@ function Simulation(props) {
         currentGen={props.currentGen}
         setCurrentGen={props.setCurrentGen}
         setGenCount={props.setGenCount}
+        setSpeed={props.setSpeed}
       />
     </VerticalContainer>
   );
