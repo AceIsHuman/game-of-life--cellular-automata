@@ -1,13 +1,16 @@
 # Conway's Game of Life
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/a34d51203e1f4817c6a6/maintainability)](https://codeclimate.com/github/AceIsHuman/game-of-life--cellular-automata/maintainability)
+
 [Deployment 🚀](https://gameoflife-ace.netlify.app/)
 
 Check out this classic computer science program replicated using the React framework! John Conway's "Game of Life" simulates _cellular automaton_ by following a few set of rules for cells on a grid.
 
 Rules:
+
 - An alive cell will continue to live if it has 2 or 3 live neighbors.
-- Likewise, and alive cell will die if it has less than 2, or more than 3 live 
-neighbors.
+- Likewise, and alive cell will die if it has less than 2, or more than 3 live
+  neighbors.
 - A cell will come alive when it has exactly 3 neighbors.
 
 Examples:
