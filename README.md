@@ -13,6 +13,13 @@ Rules:
   neighbors.
 - A cell will come alive when it has exactly 3 neighbors.
 
+In this simulation, a user may click on a cell in the grid to change it's state, alive or dead. There are four control buttons: Play, Pause, Clear Grid, & Speed.
+
+- `Play` - begins the simulation
+- `Pause` - stops the simulation at the current generation
+- `Clear Grid` - removes all live cells from the grid and resets the generation count to zero
+- `Speed` - controls the speed, 1x, 2x or 4x, at which the simulation will play.
+
 Examples:
 
 ![example-patterns](https://media.giphy.com/media/4VVZTvTqzRR0BUwNIH/giphy.gif)
