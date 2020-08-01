@@ -18,7 +18,7 @@ In this simulation, a user may click on a cell in the grid to change it's state,
 - `Play` - begins the simulation
 - `Pause` - stops the simulation at the current generation
 - `Clear Grid` - removes all live cells from the grid and resets the generation count to zero
-- `Speed` - controls the speed, 1x, 2x or 4x, at which the simulation will play.
+- `Speed` - controls the speed, 1x, 2x, 4x, or 8x at which the simulation will play.
 
 Examples:
 

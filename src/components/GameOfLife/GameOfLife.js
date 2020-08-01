@@ -38,7 +38,7 @@ function GameOfLife() {
         setCurrentGen(next);
         fillGrid(canvas, next);
       }
-    }, speed * 1000);
+    }, speed * 500);
   }, [genCount, currentGen, playing, canvas, speed]);
 
   useEffect(() => {

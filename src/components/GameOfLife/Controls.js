@@ -4,7 +4,7 @@ import { Grid, Button } from '@material-ui/core';
 
 function Controls(props) {
   const [speedIndex, setSpeedIndex] = useState(0);
-  const speeds = [1, 2, 4];
+  const speeds = [1, 2, 4, 8];
   const clearGrid = () => {
     props.setPlaying(false);
     props.setGenCount(1);
