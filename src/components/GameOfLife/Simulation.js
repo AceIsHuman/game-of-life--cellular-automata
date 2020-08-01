@@ -14,6 +14,7 @@ function Simulation(props) {
         playing={props.playing}
       />
       <Controls
+        playing={props.playing}
         setPlaying={props.setPlaying}
         currentGen={props.currentGen}
         setCurrentGen={props.setCurrentGen}

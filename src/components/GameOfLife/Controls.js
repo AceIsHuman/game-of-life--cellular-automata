@@ -39,12 +39,18 @@ function Controls(props) {
           variant='contained'
           color='primary'
           onClick={() => props.setPlaying(true)}
+          disabled={props.playing && true}
         >
           Play
         </StyledButton>
       </Grid>
       <Grid item>
-        <StyledButton variant='contained' onClick={() => props.setPlaying(false)}>
+        <StyledButton
+          variant='contained'
+          color='primary'
+          onClick={() => props.setPlaying(false)}
+          disabled={!props.playing && true}
+        >
           Pause
         </StyledButton>
       </Grid>
@@ -67,7 +73,7 @@ const Container = styled(Grid)({
 });
 
 const StyledButton = styled(Button)({
-  textTransform: 'none'
-})
+  textTransform: 'none',
+});
 
 export default Controls;
