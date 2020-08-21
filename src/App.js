@@ -20,7 +20,6 @@ const Wrapper = styled('div')({
   display: 'flex',
   alignItems: 'center',
   flexDirection: 'column',
-  padding: '0 10rem',
   boxSizing: 'border-box',
 });
 
