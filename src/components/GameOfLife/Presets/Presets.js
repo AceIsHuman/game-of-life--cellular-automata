@@ -8,6 +8,7 @@ import SmallFace from '../../../assets/presets/small_face.jpg';
 import RocketMan from '../../../assets/presets/rocket_man.jpg';
 import Random from '../../../assets/presets/random.jpg';
 import presets from './';
+import { styled } from '@material-ui/core';
 
 function Presets(props) {
   const { setCurrentGen, setGenCount, playing } = props;
@@ -37,13 +38,20 @@ function Presets(props) {
   };
 
   return (
-    <VerticalContainer style={{ justifyContent: 'center' }}>
+    <PresetContainer>
       <Preset event={handleClick} preset='preset1' image={SmallCross} alt='preset-1_small-cross' title='Preset 1' playing={playing} />
       <Preset event={handleClick} preset='preset2' image={SmallFace} alt='preset-2_small-face' title='Preset 2' playing={playing} />
       <Preset event={handleClick} preset='preset3' image={RocketMan} alt='preset-3_rocket-man' title='Preset 3' playing={playing} />
       <Preset event={generateRandom} image={Random} image_alt='preset-4_random' title='Random' playing={playing} />
-    </VerticalContainer>
+    </PresetContainer>
   );
 }
+
+const PresetContainer = styled(VerticalContainer)(({theme}) => ({
+  justifyContent: 'center',
+  [theme.breakpoints.down('sm')]: {
+    flexFlow: 'row wrap',
+  }
+}));
 
 export default Presets;
