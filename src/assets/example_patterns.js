@@ -1,8 +1,9 @@
 import React from 'react';
+import { styled } from '@material-ui/core';
 
 function ExamplePatterns() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column' }}>
+    <ExampleContainer>
       <img
         alt='example-patterns'
         src='https://camo.githubusercontent.com/a710386de69bcb8577875246196c7fb07144ff0c/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f3456565a547654717a5252304255774e49482f67697068792e676966'
@@ -16,8 +17,17 @@ function ExamplePatterns() {
           Wikipedia
         </a>
       </span>
-    </div>
+    </ExampleContainer>
   );
 }
+
+const ExampleContainer = styled('div')(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0 auto',
+  [theme.breakpoints.down('xs')]: {
+    display: 'none',
+  },
+}));
 
 export default ExamplePatterns;
