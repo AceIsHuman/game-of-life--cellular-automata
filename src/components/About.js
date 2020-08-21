@@ -37,6 +37,8 @@ const Container = styled('div')({
   margin: '3rem 0',
   padding: '0.5rem',
   borderRadius: '0.5rem',
+  maxWidth: '80rem',
+  width: '80%',
 });
 
 const Text = styled('p')(({ theme }) => ({
