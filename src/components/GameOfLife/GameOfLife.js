@@ -12,12 +12,12 @@ function GameOfLife() {
   const [genCount, setGenCount] = useState(1);
   const [playing, setPlaying] = useState(false);
   const canvas = document.getElementById('grid');
-  const [speed, setSpeed] = useState(1)
+  const [speed, setSpeed] = useState(1);
 
   const getNextGen = async (currentGen) => {
     // create empyt array to populate next gen data
     const rows = new Array(currentGen.length).fill([]);
-    const next = rows.map(i => new Array(currentGen.length).fill(0));
+    const next = rows.map((i) => new Array(currentGen.length).fill(0));
 
     // determine cell state and create new Cells on next
     for (let y = 0; y < currentGen.length; y++) {
@@ -62,7 +62,11 @@ function GameOfLife() {
         setGenCount={setGenCount}
         setSpeed={setSpeed}
       />
-      <Presets setCurrentGen={setCurrentGen} playing={playing} setGenCount={setGenCount} />
+      <Presets
+        setCurrentGen={setCurrentGen}
+        playing={playing}
+        setGenCount={setGenCount}
+      />
       <Rules />
     </Container>
   );
@@ -70,6 +74,8 @@ function GameOfLife() {
 
 const Container = styled('section')({
   display: 'flex',
+  justifyContent: 'center',
+  flexFlow: 'row wrap',
 });
 
 export default GameOfLife;
