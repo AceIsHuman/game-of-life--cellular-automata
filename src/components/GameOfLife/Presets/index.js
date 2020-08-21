@@ -6,7 +6,6 @@ function createPreset(cords) {
     return new Array(25).fill(0);
   });
   for (let cord of cords) {
-    console.log(cord);
     const [x, y] = cord;
     matrix[y][x] = 1;
   }
