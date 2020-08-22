@@ -1,13 +1,13 @@
 import { Cell } from './Cell';
-const gridSize = Number(window.innerWidth) > 600
-  ? 500
-  : window.innerWidth - 20;
+
+const gridSize = Number(window.innerWidth) > 600 ? 500 : window.innerWidth - 20;
+
 export const cellSize = gridSize / 25;
 
 export function generateGrid(canvas) {
   canvas.width = gridSize;
   canvas.height = gridSize;
-  
+
   const grid = canvas.getContext('2d');
 
   grid.strokeStyle = '#3d3d3d';
@@ -16,7 +16,7 @@ export function generateGrid(canvas) {
     grid.lineTo(x, gridSize);
     grid.stroke();
   }
-  for (let y = 0; y <= 500; y += cellSize) {
+  for (let y = 0; y <= gridSize; y += cellSize) {
     grid.moveTo(0, y);
     grid.lineTo(gridSize, y);
     grid.stroke();
@@ -35,14 +35,24 @@ export function fillGrid(canvas, generation) {
 function fillCell(cell, x, y, ctx) {
   if (cell.isAlive) {
     ctx.fillStyle = '#1faf34';
-    ctx.fillRect(x * cellSize + 1, y * cellSize + 1, cellSize -2, cellSize -2);
+    ctx.fillRect(
+      x * cellSize + 1,
+      y * cellSize + 1,
+      cellSize - 2,
+      cellSize - 2
+    );
   } else {
     ctx.fillStyle = '#e0e0e0';
-    ctx.fillRect(x * cellSize + 1, y * cellSize + 1, cellSize -2, cellSize -2);
+    ctx.fillRect(
+      x * cellSize + 1,
+      y * cellSize + 1,
+      cellSize - 2,
+      cellSize - 2
+    );
   }
 }
 
-export function createCell(x, y, matrix) {
+function createCell(x, y, matrix) {
   const isAlive = !!matrix[y][x];
   matrix[y][x] = new Cell(x, y, isAlive);
 }
