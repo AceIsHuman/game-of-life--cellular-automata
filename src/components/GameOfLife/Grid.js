@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { generateGrid, fillGrid } from './helpers';
+import { generateGrid, fillGrid, cellSize } from './helpers';
 
 function Grid(props) {
   const canvas = document.getElementById('grid');
@@ -24,8 +24,8 @@ function Grid(props) {
 
 function switchCellState(e, currentGen, setGenState, canvas) {
   // Get x and y from click event
-  const x = Math.floor((e.pageX - canvas.offsetLeft) / 20);
-  const y = Math.floor((e.pageY - canvas.offsetTop) / 20);
+  const x = Math.floor((e.pageX - canvas.offsetLeft) / cellSize);
+  const y = Math.floor((e.pageY - canvas.offsetTop) / cellSize);
 
   const cell = currentGen[y][x];
 

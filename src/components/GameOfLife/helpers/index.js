@@ -2,7 +2,7 @@ import { Cell } from './Cell';
 const gridSize = Number(window.innerWidth) > 600
   ? 500
   : window.innerWidth - 20;
-const cellSize = gridSize / 25;
+export const cellSize = gridSize / 25;
 
 export function generateGrid(canvas) {
   canvas.width = gridSize;
