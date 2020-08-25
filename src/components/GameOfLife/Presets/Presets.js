@@ -11,13 +11,12 @@ import presets from './';
 import { styled } from '@material-ui/core';
 
 function Presets(props) {
-  const { setCurrentGen, setGenCount, playing } = props;
+  const { playing, setInitialGen } = props;
   const [selection, setSelection] = useState(presets['preset1']);
 
   useEffect(() => {
-    setCurrentGen(selection);
-    setGenCount(1);
-  }, [setCurrentGen, setGenCount, selection]);
+    setInitialGen(selection);
+  }, [setInitialGen, selection]);
 
   const handleClick = (e) => {
     if (playing) return;
