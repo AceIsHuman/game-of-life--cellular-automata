@@ -7,10 +7,9 @@ function Controls(props) {
   const speeds = [1, 2, 4, 8];
   const clearGrid = () => {
     props.setPlaying(false);
-    props.setGenCount(1);
-    props.setCurrentGen(
-      props.currentGen.map((row) => {
-        return row.map((cell) => {
+    props.setInitialGen(
+      props.grid.currentGen.map(row => {
+        return row.map(cell => {
           cell.isAlive = false;
           return cell;
         });
