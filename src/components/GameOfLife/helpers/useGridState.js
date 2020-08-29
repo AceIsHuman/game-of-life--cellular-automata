@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { matrixToInt } from './endIfStale';
 import { Cell } from './Cell';
 
@@ -20,6 +20,7 @@ const getNextGen = async (currentGen) => {
 
 const useGridState = () => {
   const [grid, setGrid] = useState({
+    ref: useRef(),
     currentGen: [],
     nextGen: [],
     history: [],
@@ -32,6 +33,7 @@ const useGridState = () => {
   const setInitialGen = async (matrix) => {
     const next = await getNextGen(matrix);
     setGrid({
+      ...grid,
       currentGen: matrix,
       nextGen: next,
       history: [matrixToInt(matrix)],
@@ -45,6 +47,7 @@ const useGridState = () => {
   const setNextToCurr = async () => {
     const next = await getNextGen(grid.nextGen);
     setGrid({
+      ...grid,
       currentGen: grid.nextGen,
       nextGen: next,
       history: [...grid.history, matrixToInt(grid.nextGen)],
