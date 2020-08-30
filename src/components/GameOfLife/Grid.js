@@ -2,20 +2,18 @@ import React, { useEffect } from 'react';
 import { generateGrid, fillGrid, cellSize } from './helpers';
 
 function Grid(props) {
-  const canvas = document.getElementById('grid');
-
   useEffect(() => {
-    const canvas = document.getElementById('grid');
-    generateGrid(canvas);
-    fillGrid(canvas, props.grid.currentGen);
-  }, [props.grid.currentGen]);
+    generateGrid(props.grid.ref.current);
+  },[]);
 
   return (
     <canvas
       id='grid'
+      ref={props.grid.ref}
       onClick={(e) => {
         if (props.playing) return;
-        switchCellState(e, props.setCellState, canvas);
+        switchCellState(e, props.setCellState, props.grid.ref.current);
+        fillGrid(props.grid.ref.current, props.grid.currentGen);
       }}
       style={{ cursor: props.playing ? null : 'pointer' }}
     ></canvas>
