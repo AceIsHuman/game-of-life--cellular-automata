@@ -43,6 +43,7 @@ function GameOfLife() {
         setSpeed={setSpeed}
       />
       <Presets
+        grid={grid}
         setInitialGen={setInitialGen}
         playing={playing}
       />
