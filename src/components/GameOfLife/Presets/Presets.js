@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Cell } from '../helpers/Cell';
 
 import { VerticalContainer } from '../../Reusables';
@@ -9,14 +9,20 @@ import RocketMan from '../../../assets/presets/rocket_man.jpg';
 import Random from '../../../assets/presets/random.jpg';
 import presets from './';
 import { styled } from '@material-ui/core';
+import { fillGrid } from '../helpers/';
 
 function Presets(props) {
-  const { playing, setInitialGen } = props;
+  const { playing, setInitialGen, grid } = props;
   const [selection, setSelection] = useState(presets['preset1']);
 
+  const select = useCallback(selection => {
+    setInitialGen(selection)
+  }, [setInitialGen])
+  
   useEffect(() => {
-    setInitialGen(selection);
-  }, [setInitialGen, selection]);
+    select(selection);
+    fillGrid(grid.ref.current, selection);
+  }, [grid.ref, selection]);
 
   const handleClick = (e) => {
     if (playing) return;
