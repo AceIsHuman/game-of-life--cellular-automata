@@ -4,23 +4,20 @@ import { styled } from '@material-ui/core/styles';
 import Simulation from './Simulation';
 import Presets from './Presets/Presets';
 import Rules from './Rules';
-import { fillGrid } from './helpers';
 import useGridState from './helpers/useGridState';
 
 function GameOfLife() {
   const [grid, setInitialGen, setNextToCurr, setCellState] = useGridState()
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
-  const canvas = document.getElementById('grid');
 
   const playSimulation = useCallback(() => {
     return setTimeout(async () => {
       if (playing) {
-        fillGrid(canvas, grid.nextGen);
         setNextToCurr();
       }
     }, speed * 500);
-  }, [grid, setNextToCurr, playing, canvas, speed]);
+  }, [setNextToCurr, playing, speed]);
 
   useEffect(() => {
     if (playing) {
@@ -30,7 +27,7 @@ function GameOfLife() {
         clearInterval(simulation);
       };
     } 
-  }, [playing, grid, playSimulation, canvas]);
+  }, [playing, grid, playSimulation]);
 
   return (
     <Container>
