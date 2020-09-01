@@ -1,11 +1,11 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { matrixToInt } from './endIfStale';
 import { Cell } from './Cell';
 
-const getNextGen = async (currentGen) => {
+const getNextGen = currentGen => {
   // create empyt array to populate next gen data
   const rows = new Array(currentGen.length).fill([]);
-  const next = rows.map((i) => new Array(currentGen.length).fill(0));
+  const next = rows.map(i => new Array(currentGen.length).fill(0));
 
   // determine cell state and create new Cells on next
   for (let y = 0; y < currentGen.length; y++) {
@@ -30,16 +30,18 @@ const useGridState = () => {
   // Takes a matrix of cells and stores in currentGen
   // Determines nextGen state and assigns history value
   // Resets genCount to 1
-  const setInitialGen = async (matrix) => {
+  const setInitialGen = useCallback(async matrix => {
     const next = await getNextGen(matrix);
-    setGrid({
-      ...grid,
-      currentGen: matrix,
-      nextGen: next,
-      history: [matrixToInt(matrix)],
-      genCount: 1,
+    setGrid(grid => {
+      return {
+        ...grid,
+        currentGen: matrix,
+        nextGen: next,
+        history: [matrixToInt(matrix)],
+        genCount: 1,
+      };
     });
-  };
+  }, []);
 
   // Takes grid.nextGen and assigns it to currentGen
   // Determines new nextGen state, update history
@@ -54,7 +56,7 @@ const useGridState = () => {
       genCount: grid.genCount + 1,
     });
   };
-  
+
   // Used to update a single cell state
   // Determines nextGen state
   // Updates history value
@@ -66,7 +68,7 @@ const useGridState = () => {
       return row;
     });
     const historyKey = matrixToInt(updatedGrid);
-    const updatedHistory = [...grid.history]
+    const updatedHistory = [...grid.history];
     updatedHistory[grid.history.length - 1] = historyKey;
     const next = await getNextGen(updatedGrid);
 
