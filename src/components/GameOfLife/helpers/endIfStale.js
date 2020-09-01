@@ -14,7 +14,9 @@ export function matrixToInt(matrix) {
 export function checkIfStale(history) {
   const lastIndex = history.length - 1;
   const [previous, current] = [history[lastIndex - 1], history[lastIndex]];
-  if (current === previous) {
+  if (current === 0) {
+    return [true, 'All cells have died off!'];
+  } else if (current === previous) {
     return [true, 'You have reached a still life.'];
   }
   return [false, null];
