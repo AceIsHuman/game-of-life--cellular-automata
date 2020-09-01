@@ -5,6 +5,7 @@ import Simulation from './Simulation';
 import Presets from './Presets/Presets';
 import Rules from './Rules';
 import useGridState from './helpers/useGridState';
+import { checkIfStale } from './helpers/endIfStale';
 
 function GameOfLife() {
   const [grid, setInitialGen, setNextToCurr, setCellState] = useGridState()
@@ -12,12 +13,18 @@ function GameOfLife() {
   const [speed, setSpeed] = useState(1);
 
   const playSimulation = useCallback(() => {
-    return setTimeout(async () => {
+    return setTimeout(() => {
       if (playing) {
-        setNextToCurr();
+        const [isStale, message] = checkIfStale(grid.history);
+        if (isStale) {
+          setPlaying(false);
+          // prompt user with message using modal
+        } else {
+          setNextToCurr();
+        }
       }
     }, speed * 500);
-  }, [setNextToCurr, playing, speed]);
+  }, [setNextToCurr, playing, speed, grid.history]);
 
   useEffect(() => {
     if (playing) {
