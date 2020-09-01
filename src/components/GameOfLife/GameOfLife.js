@@ -8,9 +8,10 @@ import useGridState from './helpers/useGridState';
 import { checkIfStale } from './helpers/endIfStale';
 
 function GameOfLife() {
-  const [grid, setInitialGen, setNextToCurr, setCellState] = useGridState()
+  const [grid, setInitialGen, setNextToCurr, setCellState] = useGridState();
   const [playing, setPlaying] = useState(false);
   const [speed, setSpeed] = useState(1);
+  const [staleMessage, setStaleMessage] = useState(null);
 
   const playSimulation = useCallback(() => {
     return setTimeout(() => {
@@ -18,7 +19,7 @@ function GameOfLife() {
         const [isStale, message] = checkIfStale(grid.history);
         if (isStale) {
           setPlaying(false);
-          // prompt user with message using modal
+          setStaleMessage(message);
         } else {
           setNextToCurr();
         }
@@ -33,7 +34,7 @@ function GameOfLife() {
       return function () {
         clearInterval(simulation);
       };
-    } 
+    }
   }, [playing, grid, playSimulation]);
 
   return (
@@ -45,12 +46,9 @@ function GameOfLife() {
         playing={playing}
         setPlaying={setPlaying}
         setSpeed={setSpeed}
+        staleMessage={staleMessage}
       />
-      <Presets
-        grid={grid}
-        setInitialGen={setInitialGen}
-        playing={playing}
-      />
+      <Presets grid={grid} setInitialGen={setInitialGen} playing={playing} />
       <Rules />
     </Container>
   );
