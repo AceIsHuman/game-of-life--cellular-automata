@@ -9,15 +9,13 @@ export function matrixToInt(matrix) {
   return parseInt(matrixString, 2);
 }
 
-// Recieves an array of matrix integers representing their state.
-// If last two are same, this is a still life.
-// End the simulation
-export function endIfStale(history, setPlaying) {
+// Recieves an array of integers representing matrix state.
+// Returns boolean with case message
+export function checkIfStale(history) {
   const lastIndex = history.length - 1;
-  if (history.length >= 2) {
-    const [previous, current] = [history[lastIndex - 1], history[lastIndex]];
-    if (!(current ^ previous)) {
-      setPlaying(false);
-    }
+  const [previous, current] = [history[lastIndex - 1], history[lastIndex]];
+  if (current === previous) {
+    return [true, 'You have reached a still life.'];
   }
+  return [false, null];
 }
