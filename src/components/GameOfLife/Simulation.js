@@ -21,6 +21,7 @@ function Simulation(props) {
         playing={props.playing}
         setPlaying={props.setPlaying}
         setSpeed={props.setSpeed}
+        setStaleMessag={props.setStaleMessage}
       />
     </VerticalContainer>
   );

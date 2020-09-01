@@ -47,8 +47,14 @@ function GameOfLife() {
         setPlaying={setPlaying}
         setSpeed={setSpeed}
         staleMessage={staleMessage}
+        setStaleMessage={setStaleMessage}
       />
-      <Presets grid={grid} setInitialGen={setInitialGen} playing={playing} />
+      <Presets
+        grid={grid}
+        setInitialGen={setInitialGen}
+        playing={playing}
+        setStaleMessage={setStaleMessage}
+      />
       <Rules />
     </Container>
   );

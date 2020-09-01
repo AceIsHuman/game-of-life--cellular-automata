@@ -11,19 +11,20 @@ import presets from './';
 import { styled } from '@material-ui/core';
 
 function Presets(props) {
-  const { playing, setInitialGen } = props;
+  const { playing, setInitialGen, setStaleMessage } = props;
   const [selection, setSelection] = useState(presets['preset1']);
-  
+
   useEffect(() => {
     setInitialGen(selection);
-  }, [selection, setInitialGen]);
+    setStaleMessage(null);
+  }, [selection, setInitialGen, setStaleMessage]);
 
-  const handleClick = (e) => {
+  const handleClick = e => {
     if (playing) return;
     const userSelection = presets[e.currentTarget.dataset.preset];
     setSelection(userSelection);
   };
-  const generateRandom = (e) => {
+  const generateRandom = e => {
     if (playing) return;
     const columns = new Array(25).fill(0);
     const random = columns.map((column, yIndex) => {
@@ -38,19 +39,46 @@ function Presets(props) {
 
   return (
     <PresetContainer>
-      <Preset event={handleClick} preset='preset1' image={SmallCross} alt='preset-1_small-cross' title='Preset 1' playing={playing} />
-      <Preset event={handleClick} preset='preset2' image={SmallFace} alt='preset-2_small-face' title='Preset 2' playing={playing} />
-      <Preset event={handleClick} preset='preset3' image={RocketMan} alt='preset-3_rocket-man' title='Preset 3' playing={playing} />
-      <Preset event={generateRandom} image={Random} image_alt='preset-4_random' title='Random' playing={playing} />
+      <Preset
+        event={handleClick}
+        preset='preset1'
+        image={SmallCross}
+        alt='preset-1_small-cross'
+        title='Preset 1'
+        playing={playing}
+      />
+      <Preset
+        event={handleClick}
+        preset='preset2'
+        image={SmallFace}
+        alt='preset-2_small-face'
+        title='Preset 2'
+        playing={playing}
+      />
+      <Preset
+        event={handleClick}
+        preset='preset3'
+        image={RocketMan}
+        alt='preset-3_rocket-man'
+        title='Preset 3'
+        playing={playing}
+      />
+      <Preset
+        event={generateRandom}
+        image={Random}
+        image_alt='preset-4_random'
+        title='Random'
+        playing={playing}
+      />
     </PresetContainer>
   );
 }
 
-const PresetContainer = styled(VerticalContainer)(({theme}) => ({
+const PresetContainer = styled(VerticalContainer)(({ theme }) => ({
   justifyContent: 'center',
   [theme.breakpoints.down('sm')]: {
     flexFlow: 'row wrap',
-  }
+  },
 }));
 
 export default Presets;
