@@ -18,6 +18,8 @@ export function checkIfStale(history) {
     return [true, 'All cells have died off!'];
   } else if (current === previous) {
     return [true, 'You have reached a still life.'];
+  } else if (current === history[lastIndex - 2]) {
+    return [false, "This could go on a while, you've reached an oscillator!"];
   }
   return [false, null];
 }
