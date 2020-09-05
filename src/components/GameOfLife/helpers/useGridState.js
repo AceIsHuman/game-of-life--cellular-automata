@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-import { matrixToInt } from './endIfStale';
+import { encodeMatrix } from './endIfStale';
 import { Cell } from './Cell';
 
 const getNextGen = currentGen => {
@@ -37,7 +37,7 @@ const useGridState = () => {
         ...grid,
         currentGen: matrix,
         nextGen: next,
-        history: [matrixToInt(matrix)],
+        history: [encodeMatrix(matrix)],
         genCount: 1,
       };
     });
@@ -52,7 +52,7 @@ const useGridState = () => {
       ...grid,
       currentGen: grid.nextGen,
       nextGen: next,
-      history: [...grid.history, matrixToInt(grid.nextGen)],
+      history: [...grid.history, encodeMatrix(grid.nextGen)],
       genCount: grid.genCount + 1,
     });
   };
@@ -67,7 +67,7 @@ const useGridState = () => {
       }
       return row;
     });
-    const historyKey = matrixToInt(updatedGrid);
+    const historyKey = encodeMatrix(updatedGrid);
     const updatedHistory = [...grid.history];
     updatedHistory[grid.history.length - 1] = historyKey;
     const next = await getNextGen(updatedGrid);

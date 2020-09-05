@@ -1,4 +1,4 @@
-export function matrixToInt(matrix) {
+export function encodeMatrix(matrix) {
   let matrixString = '';
   for (let row of matrix) {
     for (let cell of row) {
@@ -6,7 +6,7 @@ export function matrixToInt(matrix) {
     }
   }
 
-  return parseInt(matrixString, 2);
+  return matrixString;
 }
 
 // Recieves an array of integers representing matrix state.
