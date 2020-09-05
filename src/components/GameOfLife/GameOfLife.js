@@ -19,10 +19,10 @@ function GameOfLife() {
         const [isStale, message] = checkIfStale(grid.history);
         if (isStale) {
           setPlaying(false);
-          setStaleMessage(message);
         } else {
           setNextToCurr();
         }
+        setStaleMessage(message);
       }
     }, speed * 500);
   }, [setNextToCurr, playing, speed, grid.history]);
