@@ -9,7 +9,7 @@ function Simulation(props) {
   return (
     <VerticalContainer>
       <SubTitle>Generation: {props.grid.genCount}</SubTitle>
-      {props.staleMessage && <Typography color='error' variant='p'>{props.staleMessage}</Typography>}
+      {props.staleMessage && <Typography color='error' variant='caption'>{props.staleMessage}</Typography>}
       <Grid
         grid={props.grid}
         setCellState={props.setCellState}
